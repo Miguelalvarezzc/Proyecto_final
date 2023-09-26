@@ -15,10 +15,10 @@ def home(request):
     return render(request, "final/home.html", {"avatar": obtenerAvatar(request)})
 
 def blog(request):
-    return render(request,"final/blog.html")
+    return render(request,"final/blog.html", {"avatar": obtenerAvatar(request)})
 
 def sobremi(request):
-    return render(request,"final/sobremi.html")
+    return render(request,"final/sobremi.html", {"avatar": obtenerAvatar(request)})
 
 
 def login_request(request):
@@ -31,7 +31,7 @@ def login_request(request):
             usuario=authenticate(username=usu, password=clave)
             if usuario is not None: 
                 login(request, usuario)
-                return render(request, "final/login.html", {"mensaje":f"Usuario {usu} logueado correctamente"})
+                return render(request, "final/login.html", {"mensaje":f"Usuario {usu} logueado correctamente", "avatar": obtenerAvatar(request)})
             else:
                 return render(request, "final/login.html", {"form":form, "mensaje":"Datos invalidos"})
         else:
@@ -47,7 +47,7 @@ def register(request):
             info=form.cleaned_data
             nombre_usuario=info["username"]
             form.save()
-            return render(request, "final/register.html", {"mensaje":f"Usuario {nombre_usuario} creado correctamente"})
+            return render(request, "final/register.html", {"mensaje":f"Usuario {nombre_usuario} creado correctamente", "avatar": obtenerAvatar(request)})
         else:
             return render(request, "final/register.html", {"form":form, "mensaje":"Datos invalidos"})
     else:
@@ -66,17 +66,36 @@ def editarPerfil(request):
             usuario.first_name=info["first_name"]
             usuario.last_name=info["last_name"]
             usuario.save()
-            return render (request, "final/inicio.html", {"mensaje":f" Usuario {usuario.username} editado correctamente"})
+            return render (request, "final/inicio.html", {"mensaje":f" Usuario {usuario.username} editado correctamente", "avatar": obtenerAvatar(request)})
         else:
             return render(request, "final/editarPerfil.html", {"form": form, "nombre usuario":usuario.userame, "mensaje":"Datos invalidos"})
     else:
         form=UserEditForm(instance=usuario)
-        return render (request, "final/editarPerfil.html", {"form": form, "nombre usuario":usuario.username})
+        return render (request, "final/editarPerfil.html", {"form": form, "nombre usuario":usuario.username, "avatar": obtenerAvatar(request)})
     
 def obtenerAvatar(request):
     avatar = Avatar.objects.filter(user=request.user.id)
 
     if len(avatar) != 0:
-        return avatar[0].image.url
+        return avatar[0].imagen.url
     else:
         return "/media/avatar/avatarpordefecto.jpg"
+    
+def agregarAvatar(request):
+    if request.method=="POST":
+        form=AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            avatar=Avatar(user=request.user, imagen=request.FILES["imagen"])
+
+            avatarViejo=Avatar.objects.filter(user=request.user)
+            if len(avatarViejo)>0:
+                avatarViejo[0].delete()
+            avatar.save()
+            return render (request, "final/agregarAvatar.html", {"mensaje":"Avatar agregado correctamente", "avatar": obtenerAvatar(request)})
+        else:
+            return render (request, "final/agregarAvatar.html", {"form":form, "usuario":request.user, "mensaje":"Error al agregar el avatar"})
+    else:
+        form=AvatarForm()
+        return render (request, "final/agregarAvatar.html", {"form":form, "usuario":request.user, "avatar": obtenerAvatar(request)})
+    
+

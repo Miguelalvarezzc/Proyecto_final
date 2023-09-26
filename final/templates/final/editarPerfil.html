@@ -69,11 +69,13 @@
 </head>
 <article>
     <!-- Post header-->
+    <li class="nav-item"><a class="btn btn-secondary" aria-current="page" href="{% url 'agregarAvatar' %}">Agregar Avatar</a></li>
     <form action="{% url 'editarPerfil' %}" method="POST">{% csrf_token %}
         <h3>{{ mensaje }}</h3>
             {{ form.as_p }}
-        <button type="submit">Inciar sesion</button>
+        <button type="submit">Guardar</button>
     </form>
+    
 
 </article>
 {% endblock %}

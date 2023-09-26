@@ -25,7 +25,8 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'blog' %}">Blog</a></li>
                         {% if user.is_authenticated %}
                         <p><li class="nav-link active">Bienvenido {{ user.username }}</li></p>
-                        <img src="{{ avatar }}" alt="avatar" style="width:58px; height:50px;">
+                        <img src="{{ avatar }}" alt="avatar" style="width:50px;height:50px; text-decoration-color:black">
+                        <li class="nav-item"><a class="btn btn-secondary" aria-current="page" href="{% url 'editarPerfil' %}">Editar Perfil</a></li>
                         <li class="nav-item"><a class="btn btn-secondary" aria-current="page" href="{% url 'logout' %}">Log out</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'register' %}">Registrar</a></li>
