@@ -1,2 +1,26 @@
 {% extends "final/padre.html" %}
 {% load static %}
+{% block contenido_que_cambia %} 
+<header class="mb-4">
+    <!-- Post title-->
+    <h1 class="fw-bolder mb-1">Viaja a Perú!</h1>
+    <!-- Post meta content-->
+    <div class="text-muted fst-italic mb-2">Posteado en Septiembre 7 del 2023 por Miguel Alvarez</div>
+    <!-- Post categories-->
+    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+</header>
+<!-- Preview image figure-->
+<img src="img/mashupishu.jpg" alt="..." />
+<!-- Post content-->
+<section class="mb-5">
+    <p class="fs-5 mb-4">Machu Picchu fue construido en el siglo XV por el emperador inca Pachacutec, que inició un periodo de expansión y prosperidad para el imperio inca. Pachacutec eligió un lugar estratégico, enclavado entre montañas y valles, para establecer su residencia imperial y un santuario religioso.</p>
+    <p class="fs-5 mb-4">La arquitectura de Machu Picchu es un notable ejemplo del arte inca, caracterizado por la armonía de sus formas, la maestría en el corte de la piedra y su adaptación al relieve y al entorno natural.</p>
+    <p class="fs-5 mb-4">Los edificios del sitio están construidos en granito, con bloques de piedra encajados con precisión milimétrica, sin argamasa ni cemento. Los muros están ligeramente inclinados hacia el interior para resistir mejor los terremotos y los derrumbes.</p>
+    <h2 class="fw-bolder mb-4 mt-5">Consejos para visitar Machu Picchu</h2>
+    <p class="fs-5 mb-4"><h4>Cuándo ir:</h4> La mejor época para visitar Machu Picchu es durante la estación seca (de abril a octubre).</p>
+    <p class="fs-5 mb-4"><h4>Cómo llegar:</h4> Puedes tomar el tren desde Cuzco u Ollantaytambo hasta Aguas Calientes, y luego un autobús hasta la entrada de Machu Picchu.
+        Otra opción es hacer la famosa caminata del Inca Trail, que dura 4 días y 3 noches.</p>
+</section>
+
+{% endblock %}

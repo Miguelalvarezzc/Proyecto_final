@@ -30,7 +30,7 @@
                         {% else %}
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'register' %}">Registrar</a></li>
                         <li class="nav-item"><a class="btn btn-secondary" aria-current="page" href="{% url 'login' %}">Log in</a></li>
-                        {% endif %}
+                        {% endif %}                  
                     </ul>
                 </div>
             </div>
@@ -39,31 +39,83 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-8">
-                    {% block contenido_que_cambia %}
-                    <!-- Post content-->
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Formulario de ejemplo</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f0f0f0;
+                            }
+                    
+                            h1 {
+                                text-align: center;
+                                color: #333;
+                            }
+                    
+                            form {
+                                background-color: #fff;
+                                padding: 20px;
+                                border-radius: 5px;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                max-width: 400px;
+                                margin: 0 auto;
+                            }
+                    
+                            label {
+                                display: block;
+                                margin-bottom: 5px;
+                            }
+                    
+                            input[type="text"],
+                            input[type="email"],
+                            select,
+                            textarea {
+                                width: 100%;
+                                padding: 10px;
+                                margin-bottom: 10px;
+                                border: 1px solid #ccc;
+                                border-radius: 3px;
+                            }
+                    
+                            select {
+                                height: 35px;
+                            }
+                    
+                            input[type="checkbox"] {
+                                margin-right: 5px;
+                            }
+                    
+                            textarea {
+                                resize: vertical;
+                            }
+                    
+                            input[type="submit"] {
+                                background-color: #007bff;
+                                color: #fff;
+                                border: none;
+                                padding: 10px 20px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                            }
+                    
+                            input[type="submit"]:hover {
+                                background-color: #0056b3;
+                            }
+                        </style>
+                    </head>
                     <article>
                         <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">CONOCE LOS MEJORES LUGARES PARA VIAJAR</h1>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
-                        </header>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <p>En esta página web vas a poder encontrar lugares por el mundo increíbles para poder vacacionar y relajarse en familia, con amigos o incluso solo vos. </p>
-                            <h2 class="fw-bolder mb-1">Perú</h2>
-                            <p>Perú ofrece a sus visitantes una gran variedad de experiencias únicas, desde playas, selvas y montañas hasta gastronomía, música y danza. Es un destino ideal para aquellos que quieren explorar el corazón de América del Sur.</p>
-                            <h2 class="fw-bolder mb-1">Colombia</h2>
-                            <p>Tiene una oferta turística basada en la tradición y la conservación de sus paisajes y tradiciones cafetaleras. Es posible hospedarse en bellas haciendas en medio de los inmensos cafetales, vivir el proceso de producción del grano, además de disfrutar de parques temáticos alrededor de la cultura cafetera.</p>
-                            <h2 class="fw-bolder mb-1">Brasil</h2>
-                            <p>Brasil ofrece varias opciones de turismo entre ellas: actividades de aventura, ecoturismo, turismo de negocios y eventos, fiestas populares, de sol y playa, deportes, buceo, pesca y diversos patrimonios de la humanidad.</p>
-                            <h2 class="fw-bolder mb-1">Mexico</h2>
-                            <p>México ofrece una amplia gama de opciones turísticas entre las que se encuentran los destinos de playa, sitios históricos, sitios de eco-aventura, deportes extremos; recorridos culturales, etc. México cuenta con 1,964,375 km2 de territorio de los cuales 11,122 km son costa.</p>
-                        </section>
+                        <form action="" method="POST">
+                            <h3>{{ mensaje }}</h3>
+                            {% csrf_token %}
+                                {{ form.as_p }}
+                            <button type="submit">Iniciar sesion</button>
+                        </form>
+                    
                     </article>
-                    {% endblock %}
+                    <!-- Comments section-->
                     
                 </div>
                 <!-- Side widgets-->

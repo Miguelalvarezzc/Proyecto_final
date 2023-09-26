@@ -1,0 +1,61 @@
+{% extends "final/padre.html" %}
+{% load static %}
+{% block contenido_que_cambia %} 
+
+<article>
+    <!-- Post header-->
+    <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1">Mis redes</h1>
+
+
+
+    </header>
+       
+    <section>
+
+
+        <p>Hola me llamo Miguel y este es mi blog sobre algunos lugares para vacacionar. Sobre todo hago índice en Perú ya que es el país donde nacieron mis padres, tiene lugares hermosos y su cultura es increíble. Dejo a continuación mis redes por donde pueden comunicarse conmigo.</p>
+
+
+    </section>
+   
+    <section class="mb-5">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Mis Redes Sociales</title>
+            <!-- Agrega aquí cualquier estilo CSS adicional que desees para los íconos -->
+            <style>
+                .social-icon {
+                    font-size: 24px;
+                    margin-right: 10px;
+                }
+            </style>
+        </head>
+        <body>
+           
+            <!-- Reemplaza los enlaces y los íconos con los de tus redes sociales -->
+            <a href="https://www.facebook.com/tucuenta" target="_blank">
+                <i class="social-icon fab fa-facebook"></i> Facebook
+            </a>
+            <br>
+            <a href="https://twitter.com/tucuenta" target="_blank">
+                <i class="social-icon fab fa-twitter"></i> Twitter
+            </a>
+            <br>
+            <a href="https://www.instagram.com/tucuenta" target="_blank">
+                <i class="social-icon fab fa-instagram"></i> Instagram
+            </a>
+            <br>
+            <a href="https://www.linkedin.com/in/tucuenta" target="_blank">
+                <i class="social-icon fab fa-linkedin"></i> LinkedIn
+            </a>
+           
+            <!-- Asegúrate de incluir la biblioteca Font Awesome para los íconos -->
+            <!-- Puedes obtenerla en https://fontawesome.com/ -->
+            <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        </body>
+    </section>
+</article>
+{% endblock %}
