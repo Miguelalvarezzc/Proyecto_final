@@ -11,3 +11,10 @@ class Register(models.Model):
 class Avatar(models.Model):
     imagen = models.ImageField(upload_to="avatar")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
+class Blog(models.Model):
+    titulo = models.CharField(max_length=200)
+    contenido = models.CharField()
+    imagen = models.ImageField(upload_to='blog_images/', blank=True, null=True)
+    autor = models.CharField(max_length=70)
+

@@ -15,7 +15,21 @@ def home(request):
     return render(request, "final/home.html", {"avatar": obtenerAvatar(request)})
 
 def blog(request):
-    return render(request,"final/blog.html", {"avatar": obtenerAvatar(request)})
+    if request.method == 'POST':
+        form=BlogForm(request.POST)
+        if form.is_valid():
+            info=form.cleaned_data
+            titu=info["titulo"]
+            cont=info["contenido"]
+            aut=info["autor"]
+            form.save()
+            return render(request, "final/blog.html", {"avatar": obtenerAvatar(request)})
+        else:
+            return render(request, "final/blog.html")
+    else:
+        form=BlogForm()
+        return render(request,"final/blog.html", {"avatar": obtenerAvatar(request)})
+    
 
 def sobremi(request):
     return render(request,"final/sobremi.html", {"avatar": obtenerAvatar(request)})
@@ -98,4 +112,3 @@ def agregarAvatar(request):
         form=AvatarForm()
         return render (request, "final/agregarAvatar.html", {"form":form, "usuario":request.user, "avatar": obtenerAvatar(request)})
     
-
