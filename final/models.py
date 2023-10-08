@@ -14,7 +14,7 @@ class Avatar(models.Model):
 
 class Blog(models.Model):
     titulo = models.CharField(max_length=200)
-    contenido = models.CharField()
+    contenido = models.TextField()  # Cambia a TextField
     imagen = models.ImageField(upload_to='blog_images/', blank=True, null=True)
     autor = models.CharField(max_length=70)
 

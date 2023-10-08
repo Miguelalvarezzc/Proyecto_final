@@ -16,19 +16,14 @@ def home(request):
 
 def blog(request):
     if request.method == 'POST':
-        form=BlogForm(request.POST)
+        # request.FILES nos sirve para manejar la imagen
+        form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
-            info=form.cleaned_data
-            titu=info["titulo"]
-            cont=info["contenido"]
-            aut=info["autor"]
-            form.save()
+            form.save()  # El formulario ya se encargará de guardar la imagen correctamente
             return render(request, "final/blog.html", {"avatar": obtenerAvatar(request)})
-        else:
-            return render(request, "final/blog.html")
     else:
-        form=BlogForm()
-        return render(request,"final/blog.html", {"avatar": obtenerAvatar(request)})
+        form = BlogForm()
+    return render(request, "final/blog.html", {"avatar": obtenerAvatar(request), 'form': form})
     
 
 def sobremi(request):
@@ -112,3 +107,18 @@ def agregarAvatar(request):
         form=AvatarForm()
         return render (request, "final/agregarAvatar.html", {"form":form, "usuario":request.user, "avatar": obtenerAvatar(request)})
     
+class Bloglista(ListView, LoginRequiredMixin):
+    model = Blog
+    template_name = "final/blog_lista.html"
+
+class Blogvista(DetailView, LoginRequiredMixin):
+    model = Blog
+    success_url = reverse_lazy("blog_lista")
+    template_name = "final/blog_vista.html"
+
+def obtenerBlog(request):
+    foto_blog = Blog.objects.filter(blog=request.blog.id)
+    if len(foto_blog) != 0:
+        return foto_blog[0].imagen.url
+    else:
+        return "/media/blog_images/Fondo.png"

@@ -28,11 +28,9 @@ class UserEditForm(UserCreationForm):
 class AvatarForm(forms.Form):
     imagen = forms.ImageField(label="Imagen")
 
-class BlogForm(forms.Form):
-    titulo=forms.CharField(max_length=200)
-    contenido = forms.CharField()
-    imagen = forms.ImageField(upload_to='blog_images/', blank=True, null=True)
-    autor = forms.CharField(max_length=70)
+class BlogForm(forms.ModelForm): 
     class Meta:
-        model = Blog
+        model = Blog 
+        # Especificamos los campos que queremos incluir en el formulario
         fields = ['titulo', 'contenido', 'imagen', 'autor']
+

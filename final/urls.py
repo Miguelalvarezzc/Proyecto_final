@@ -11,4 +11,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('editarPerfil', editarPerfil, name="editarPerfil" ),
     path('agregarAvatar', agregarAvatar, name="agregarAvatar"),
+    path('blog_lista', Bloglista.as_view(), name="blog_lista"),
+    path('blog_vista', Blogvista.as_view(), name="blog_vista"),
 ]

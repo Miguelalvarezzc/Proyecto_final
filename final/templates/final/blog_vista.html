@@ -1,0 +1,21 @@
+{% extends "final/padre.html" %}
+{% load static %}
+{% block contenido_que_cambia %} 
+
+<div class="container">
+
+    <p><h4>{{blog.titulo}}</h4></p>
+
+    {% if blog.imagen %}
+
+        Portada:
+        <p><img src="{{blog.imagen.url}}" style="width: 300px; height: 425px;" alt="blog"></p>
+
+    {% endif %}
+    
+    <p>Autor: {{blog.autor}}</p>
+    <p>Contenido: {{blog.contenido}}</p>
+    
+</div>
+
+{% endblock %}
