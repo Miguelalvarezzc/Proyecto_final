@@ -11,32 +11,70 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'final/css/styles.css' %}" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <title>Barra de Opciones con Color</title>
+        <style>
+            body {
+            background-color: #eeeac5; 
+            }
+            .navbar {
+                background-color:#FFBB5C; /* Color de fondo */
+                overflow: hidden;
+            }
+    
+            /* Estilos para los elementos de la barra de opciones */
+            .navbar a {
+                float: left;
+                font-size: 16px;
+                color: #FFFFFF; /* Color del texto */
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            /* Cambio de color al pasar el mouse por encima */
+            .navbar a:hover {
+                background-color: #E25E3E; /* Color de fondo al pasar el mouse */
+            }
+        </style>
     </head>
     <body>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg" >
             <div class="container">
-                <a class="navbar-brand" href="#!">Traveling</a>
+                <a class="navbar-brand" href="#!" style="color: #C63D2F;">Traveling</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'sobremi' %}">Sobre mi</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'blog_lista' %}">Blog</a></li>
                         {% if user.is_authenticated %}
-                        <p><li class="nav-link active">Bienvenido {{ user.username }}</li></p>
-                        <img src="{{ avatar }}" alt="avatar" style="width:50px;height:50px; text-decoration-color:black">
-                        <li class="nav-item"><a class="btn btn-secondary" aria-current="page" href="{% url 'editarPerfil' %}">Editar Perfil</a></li>
-                        <li class="nav-item"><a class="btn btn-secondary" aria-current="page" href="{% url 'logout' %}">Log out</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'blog_lista' %}">Blog</a></li>
+                        <img src="{{ avatar }}" alt="avatar" style="width:40px;height:40px; text-decoration-color:black">
+                        <br>
+                        <li class="nav-item"><a style="color: #C63D2F;" aria-current="page" href="{% url 'editarPerfil' %}">Editar Perfil</a></li>
+                        <li class="nav-item"><a style="color: #C63D2F;" aria-current="page" href="{% url 'logout' %}">Log out</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'register' %}">Registrar</a></li>
-                        <li class="nav-item"><a class="btn btn-secondary" aria-current="page" href="{% url 'login' %}">Log in</a></li>
+                        <li class="nav-item"><a style="color: #C63D2F;" aria-current="page" href="{% url 'login' %}">Log in</a></li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- Page content-->
+        <head>
+            <meta charset="UTF-8">
+            <title>Cartel</title>
+            <style>
+                /* Estilos para el cartel */
+                .cartel {
+                    background-color: #f8ba80;
+                    border: 2px solid #ff9430;
+                    padding: 20px;
+                    text-align: center;
+                }
+            </style>
+        </head>
         <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-8">
@@ -46,7 +84,7 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">CONOCE LOS MEJORES LUGARES PARA VIAJAR</h1>
+                            <h1 class="fw-bolder mb-1" style="color: #E25E3E;">CONOCE LOS MEJORES LUGARES PARA VIAJAR</h1>
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
@@ -54,31 +92,51 @@
                         <!-- Post content-->
                         <section class="mb-5">
                             <p>En esta página web vas a poder encontrar lugares por el mundo increíbles para poder vacacionar y relajarse en familia, con amigos o incluso solo vos. </p>
-                            <h2 class="fw-bolder mb-1">Perú</h2>
+                            <div class="cartel">
+                                <h4 class="fw-bolder mb-1" style="color: #C63D2F;">Para poder acceder a los blogs de turistas y sus experiencias de sus viajes ¡REGISTRATE!</h4>
+                            </div>   
+                            <BR></BR>                         
+                            <h2 class="fw-bolder mb-1" style="color: #FF7B54;">Perú</h2>
                             <p>Perú ofrece a sus visitantes una gran variedad de experiencias únicas, desde playas, selvas y montañas hasta gastronomía, música y danza. Es un destino ideal para aquellos que quieren explorar el corazón de América del Sur.</p>
-                            <h2 class="fw-bolder mb-1">Colombia</h2>
+                            <h2 class="fw-bolder mb-1" style="color: #FF7B54;">Colombia</h2>
                             <p>Tiene una oferta turística basada en la tradición y la conservación de sus paisajes y tradiciones cafetaleras. Es posible hospedarse en bellas haciendas en medio de los inmensos cafetales, vivir el proceso de producción del grano, además de disfrutar de parques temáticos alrededor de la cultura cafetera.</p>
-                            <h2 class="fw-bolder mb-1">Brasil</h2>
+                            <h2 class="fw-bolder mb-1" style="color: #FF7B54;">Brasil</h2>
                             <p>Brasil ofrece varias opciones de turismo entre ellas: actividades de aventura, ecoturismo, turismo de negocios y eventos, fiestas populares, de sol y playa, deportes, buceo, pesca y diversos patrimonios de la humanidad.</p>
-                            <h2 class="fw-bolder mb-1">Mexico</h2>
+                            <h2 class="fw-bolder mb-1" style="color: #FF7B54;">Mexico</h2>
                             <p>México ofrece una amplia gama de opciones turísticas entre las que se encuentran los destinos de playa, sitios históricos, sitios de eco-aventura, deportes extremos; recorridos culturales, etc. México cuenta con 1,964,375 km2 de territorio de los cuales 11,122 km son costa.</p>
                         </section>
                     </article>
                     {% endblock %}
                     
                 </div>
+                <style>
+                    /* Estilos para la clase "card mb-4" */
+                    .card.mb-4 {
+                        background-color: #ffc471; /* Cambia este valor al color que desees */
+                        padding: 10px;
+                    }
+                    .card-header{
+                        background-color: #FF9B50; /* Cambia este valor al color que desees */
+                        padding: 10px;
+                    }
+                    .btn{
+                        background-color: #ff5050;
+                    }
+                    
+                </style>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
                     <!-- Search widget-->
-                    <div class="card mb-4">
+                    <div class="card mb-4 ">
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                <button class="btn" id="button-search" type="button">Go!</button>
                             </div>
                         </div>
                     </div>
+                    
                     <!-- Categories widget-->
                     <div class="card mb-4">
                         <div class="card-header">Otros paises</div>
@@ -107,7 +165,12 @@
             </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <style>
+            .py-5{
+                background-color:#FFBB5C;
+            }
+        </style>
+        <footer class="py-5">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->

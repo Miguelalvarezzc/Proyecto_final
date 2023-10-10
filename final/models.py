@@ -18,3 +18,11 @@ class Blog(models.Model):
     imagen = models.ImageField(upload_to='blog_images/', blank=True, null=True)
     autor = models.CharField(max_length=70)
 
+class Comentario(models.Model):
+    nombre = models.CharField(max_length=40)
+    mensaje = models.TextField(null=True, blank=True)
+    comentario = models.ForeignKey(Blog, related_name="comentario", on_delete=models.CASCADE, null=True
+    )
+    def __str__(self):
+        return f"{self.nombre} - {self.comentario}"
+

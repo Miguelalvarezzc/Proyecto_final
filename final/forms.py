@@ -34,3 +34,9 @@ class BlogForm(forms.ModelForm):
         # Especificamos los campos que queremos incluir en el formulario
         fields = ['titulo', 'contenido', 'imagen', 'autor']
 
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['nombre', 'mensaje']
+
+

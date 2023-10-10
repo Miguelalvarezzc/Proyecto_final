@@ -110,7 +110,7 @@ def agregarAvatar(request):
 class Bloglista(ListView, LoginRequiredMixin):
     model = Blog
     template_name = "final/blog_lista.html"
-
+ 
 class Blogvista(DetailView, LoginRequiredMixin):
     model = Blog
     success_url = reverse_lazy("blog_lista")
@@ -122,3 +122,9 @@ def obtenerBlog(request):
         return foto_blog[0].imagen.url
     else:
         return "/media/blog_images/Fondo.png"
+    
+class Comentarios(LoginRequiredMixin, CreateView):
+    model = Comentario
+    form_class = ComentarioForm
+    template_name = "final/comentario.html"
+    success_url = reverse_lazy("home")

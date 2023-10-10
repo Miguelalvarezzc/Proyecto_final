@@ -4,18 +4,29 @@
 
 <div class="container">
 
-    <p><h4>{{blog.titulo}}</h4></p>
+    <h1 class="fw-bolder mb-1" style="text-align: center; font-size: 36px; color: #E25E3E;">{{blog.titulo}}</h1>
 
     {% if blog.imagen %}
 
-        Portada:
-        <p><img src="{{blog.imagen.url}}" style="width: 300px; height: 425px;" alt="blog"></p>
+        <h5 class="fw-bolder mb-1" style="color: #E25E3E;">Portada: </h5>
+        <p><img src="{{blog.imagen.url}}" style="width: 700px; height: 350px;" alt="blog"></p>
 
     {% endif %}
-    
-    <p>Autor: {{blog.autor}}</p>
-    <p>Contenido: {{blog.contenido}}</p>
+
+    <p><h5 class="fw-bolder mb-1" style="color: #E25E3E;">Autor: </h5> {{blog.autor}}</p>
+    <p><h5 class="fw-bolder mb-1" style="color: #E25E3E;">Contenido: </h5> {{blog.contenido}}</p>
     
 </div>
-
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <hr>
+    <a href="{% url 'comentario' pk=blog.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
 {% endblock %}

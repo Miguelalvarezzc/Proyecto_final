@@ -12,5 +12,6 @@ urlpatterns = [
     path('editarPerfil', editarPerfil, name="editarPerfil" ),
     path('agregarAvatar', agregarAvatar, name="agregarAvatar"),
     path('blog_lista', Bloglista.as_view(), name="blog_lista"),
-    path('blog_vista', Blogvista.as_view(), name="blog_vista"),
+    path('blog_vista/<int:pk>/', Blogvista.as_view(), name="blog_vista"),
+    path("comentario/<int:pk>/", Comentarios.as_view(), name="comentario"),
 ]
