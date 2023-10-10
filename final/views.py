@@ -110,11 +110,21 @@ def agregarAvatar(request):
 class Bloglista(ListView, LoginRequiredMixin):
     model = Blog
     template_name = "final/blog_lista.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['avatar'] = obtenerAvatar(self.request)
+        return context
+
  
 class Blogvista(DetailView, LoginRequiredMixin):
     model = Blog
     success_url = reverse_lazy("blog_lista")
     template_name = "final/blog_vista.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['avatar'] = obtenerAvatar(self.request)
+        return context
+
 
 def obtenerBlog(request):
     foto_blog = Blog.objects.filter(blog=request.blog.id)
