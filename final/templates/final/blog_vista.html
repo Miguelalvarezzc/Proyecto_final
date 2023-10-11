@@ -22,15 +22,16 @@
     <h4>Comentarios...</h4>
     <br>
     <div class="container">
-        {% if not comentario.mensaje.all %}
-        No se han realizado comentarios sobre este comic
+        {% if not comentarios %}
+        No se han realizado comentarios sobre este blog
         {% else %}
-            {% for mensaje in comntario.mensaje.all %}
-                <p><strong>{{comentario.nombre}}</strong></p>
-                <p>{{comentario.mensaje}}</p>
+            {% for mensaje in comentarios %}
+                <p><strong>{{mensaje.nombre}}</strong></p>
+                <p>{{mensaje.mensaje}}</p>
                 <hr>
             {% endfor %}
         {% endif %}
+
 
     <a href="{% url 'comentario' pk=blog.pk %}">Agrega un Comentario</a>
     </div>

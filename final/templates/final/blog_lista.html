@@ -6,10 +6,10 @@
     <div class="row">
         {% for blog in object_list %}
         <ul>
-            <div class="col-sm-6 align-items-center">
+            <div >
                 <div class="card-body">
                 
-                    <a href="{% url 'blog_vista' pk=blog.pk %}">{{ blog.titulo }}<i class="bi bi-eye"></i></a>
+                    <a href="{% url 'blog_vista' pk=blog.pk %}">{{ blog.titulo }}<i></i></a>
 
                     <p><img src="{{ blog.imagen.url }}"  style="width: 400px; height: 200px" alt="Portada"></p>
 
@@ -22,6 +22,6 @@
     </div>       
 </div>
 
-<a class="btn"  href="{% url 'blog'  %}">¡Comparte tu experiencia!</a>
+<a class="btn"  href="{% url 'blog'  %}">¡Comparte tu experiencia!</a><br>
 
 {% endblock %}

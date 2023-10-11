@@ -120,10 +120,13 @@ class Blogvista(DetailView, LoginRequiredMixin):
     model = Blog
     success_url = reverse_lazy("blog_lista")
     template_name = "final/blog_vista.html"
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['avatar'] = obtenerAvatar(self.request)
+        context['comentarios'] = Comentario.objects.all()
         return context
+
 
 
 def obtenerBlog(request):
@@ -138,3 +141,7 @@ class Comentarios(LoginRequiredMixin, CreateView):
     form_class = ComentarioForm
     template_name = "final/comentario.html"
     success_url = reverse_lazy("home")
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['avatar'] = obtenerAvatar(self.request)
+        return context
